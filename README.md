@@ -26,4 +26,4 @@ docker image build --tag api:v1 --file ./sdk.dockerfile . --network "Default Swi
 docker run --name web -d -p 8080:80 --rm api:v1
 
 ## servidor BBDD sqlserver
-docker run --name sqldeveloper -d -p 1433:1433 -e sa_password=<password> -e ACCEPT_EULA=Y -v "C:\sqlserverdata:C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA" -e attach_dbs="[{'dbName':'<nombre_bbdd>','dbFiles':['c:\data\<fichero>.mdf','c:\data\<fichero>.ndf','c:\data\<fichero>_Log.ldf']}]" microsoft/mssql-server-windows-developer
+docker run --name sqldeveloper -d -p 1433:1433 -e sa_password=<password> -e ACCEPT_EULA=Y -v "C:\sqlserverdata:C:\data" -e attach_dbs="[{'dbName':'<nombre_bbdd>','dbFiles':['c:\data\<fichero>.mdf','c:\data\<fichero>.ndf','c:\data\<fichero>_Log.ldf']}]" microsoft/mssql-server-windows-developer
