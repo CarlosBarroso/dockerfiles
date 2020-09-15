@@ -7,18 +7,22 @@ Este repositorio contiene los dockerfiles para preparar contenedores windows de:
 
 ## elasticsearch
 docker image build --tag elasticsearch:v1 --file ./elasticsearch.dockerfile . --network "Default Switch"
+
 docker run --name elasticsearch -it -p 9200:9200 -p 9300:9300 -m 3GB -e discovery.type=single-node --rm epreselec-elasticsearch:v1
 
 ## kibana
 docker image build --tag kibana:v1 --file ./kibana.dockerfile . --network "Default Switch"
+
 docker run --name kibana -d -p 5601:5601 --rm kibana:v1
 
 ## logstash
 docker image build --tag logstash:v1 --file ./logstash.dockerfile . --network "Default Switch"
+
 docker run --name logstash -d -p 5601:5601 --rm logstash:v2
 
 ## webapi
 docker image build --tag api:v1 --file ./sdk.dockerfile . --network "Default Switch"
+
 docker run --name web -d -p 8080:80 --rm api:v1
 
 ## servidor BBDD sqlserver
