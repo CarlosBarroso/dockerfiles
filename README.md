@@ -26,6 +26,16 @@ docker run --name logstash -d -p 5601:5601 --rm logstash:v1
 
 docker run --name logstash -d -p 5601:5601 --rm cbarrosoc/logstash:v1
 
+#app stack
+Se incluyen los docker files para crear los contenedores de webapi y la bbdd.
+
+Así mismo se puede encontrar el docker-compose que levanta los dos contenedores.
+
+No se ha podido incluir el stack de elk en el fichero de docker compose por los requisitos de memoria que tiene elastic search. 
+
+No he encontrado como transladar el parámetro -m al fichero docker-compose
+
+
 ## webapi
 docker image build --tag api:v1 --file ./sdk.dockerfile . --network "Default Switch"
 
