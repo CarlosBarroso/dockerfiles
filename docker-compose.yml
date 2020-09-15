@@ -16,7 +16,7 @@ services:
       - app-net
 
   web:
-    image: epreselec-api:v13
+    image: api:v1
     ports:
       - "8080:80"
     depends_on:
@@ -24,23 +24,23 @@ services:
     networks:
       - app-net
   
-  prometheus:
-    image: epreselec-prometheus:v4
-    ports:
-      - "9090:9090"
-    depends_on:
-      - web
-    networks:
-      - app-net
-
-  graphana:
-    image: epreselec-graphana:v1
-    ports:
-      - "3000:3000"
-    depends_on:
-      - prometheus
-    networks:
-      - app-net
+#  prometheus:
+#    image: epreselec-prometheus:v4
+#    ports:
+#      - "9090:9090"
+#    depends_on:
+#      - web
+#    networks:
+#      - app-net
+#
+#  graphana:
+#    image: epreselec-graphana:v1
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - prometheus
+#    networks:
+#      - app-net
 
 
 networks:
