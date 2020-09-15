@@ -1,0 +1,49 @@
+version: '3.3'
+
+services:
+
+  sqldeveloper:
+    image: microsoft/mssql-server-windows-developer
+    env_file:
+     - ./bbdd.env
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - c:\sqlserverdata:c:\data
+    ports:
+      - "1433:1433"
+    networks:
+      - app-net
+
+  web:
+    image: epreselec-api:v13
+    ports:
+      - "8080:80"
+    depends_on:
+      - sqldeveloper
+    networks:
+      - app-net
+  
+  prometheus:
+    image: epreselec-prometheus:v4
+    ports:
+      - "9090:9090"
+    depends_on:
+      - web
+    networks:
+      - app-net
+
+  graphana:
+    image: epreselec-graphana:v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - app-net
+
+
+networks:
+  app-net:
+    external:
+      name: nat
